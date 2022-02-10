@@ -6,3 +6,5 @@ const animate = window.requestAnimationFrame // use for animating
 
 const GAME_HEIGHT = 600
 const GAME_WIDTH = 800
+
+let player
