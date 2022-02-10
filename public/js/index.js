@@ -8,8 +8,7 @@ function drawBackground(){
 }
 
 function update(){
-    console.log('xspeed', player.xSpeed)
-    console.log('yspeed', player.ySpeed)
+    player.update()
 }
 
 function draw(){

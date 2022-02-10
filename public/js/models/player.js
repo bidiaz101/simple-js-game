@@ -86,7 +86,8 @@ class Player {
 
     // used for updating the player position
     update(){
-
+        this.x += this.xSpeed
+        this.y += this.ySpeed
     }
 
     // used for drawing the player to the canvas
