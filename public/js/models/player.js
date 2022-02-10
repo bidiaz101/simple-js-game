@@ -32,25 +32,46 @@ class Player {
     addMovement(e){
         switch(e.code){
             case UP_KEY:
-                this.ySpeed = -1
+                this.ySpeed = this.y > 0 ? -1 : 0;
+                if(this.y > 0){
+                    this.ySpeed = -1
+                } else {
+                    this.ySpeed = 0
+                    this.y = 0
+                }
                 this.resetDirections()
                 this.direction.up = true
                 this.xSpeed = 0
                 break;
             case DOWN_KEY:
-                this.ySpeed = 1
+                if(this.y < (GAME_HEIGHT - 20)){
+                    this.ySpeed = 1
+                } else {
+                    this.ySpeed = 0
+                    this.y = GAME_HEIGHT - 20
+                }
                 this.resetDirections()
                 this.direction.down = true
                 this.xSpeed = 0
                 break;
             case LEFT_KEY:
-                this.xSpeed = -1
+                if(this.x > 0){
+                    this.xSpeed = -1
+                } else {
+                    this.xSpeed = 0
+                    this.x = 0
+                }
                 this.resetDirections()
                 this.direction.left = true
                 this.ySpeed = 0
                 break;
             case RIGHT_KEY:
-                this.xSpeed = 1
+                if(this.x < (GAME_WIDTH - 20)){
+                    this.xSpeed = 1
+                } else {
+                    this.xSpeed = 0
+                    this.x = GAME_WIDTH - 20
+                }
                 this.resetDirections()
                 this.direction.right = true
                 this.ySpeed = 0
