@@ -16,11 +16,13 @@ class Player {
         this.xSpeed = 0
         this.ySpeed = 0
 
+        this.canFire = true
+
         this.playerAction = this.playerAction.bind(this)
         this.stopMovement = this.stopMovement.bind(this)
     }
 
-    controls(){
+    setupControls(){
         this.setupMovement()
     }
 
@@ -76,15 +78,37 @@ class Player {
                 this.ySpeed = 0
                 break;
             case SPACE:
-                let laserAttr = {}
-                if(this.direction.up){
-                    laserAttr.height = 25
-                    laserAttr.width = 5
-                    laserAttr.y = this.y - laserAttr.height - 5
-                    laserAttr.x = this.x + 7.5
-                    laserAttr.direction = 'up'
+                if(this.canFire){
+                    this.canFire = false
+                    let laserAttr = {}
+                    if(this.direction.up){
+                        laserAttr.height = 25
+                        laserAttr.width = 5
+                        laserAttr.y = this.y - laserAttr.height - 5
+                        laserAttr.x = this.x + 7.5
+                        laserAttr.direction = 'up'
+                    } else if (this.direction.down){
+                        laserAttr.height = 25
+                        laserAttr.width = 5
+                        laserAttr.y = this.y + laserAttr.height + 5
+                        laserAttr.x = this.x + 7.5
+                        laserAttr.direction = 'down'
+                    } else if (this.direction.left){
+                        laserAttr.height = 5
+                        laserAttr.width = 25
+                        laserAttr.y = this.y + 7.5
+                        laserAttr.x = this.x - laserAttr.width - 5
+                        laserAttr.direction = 'left'
+                    } else if (this.direction.right){
+                        laserAttr.height = 5
+                        laserAttr.width = 25
+                        laserAttr.y = this.y + 7.5
+                        laserAttr.x = this.x + laserAttr.width + 5
+                        laserAttr.direction = 'right'
+                    }
+                    new Laserbeam(laserAttr)
+                    setTimeout(() => this.canFire = true, 300)
                 }
-                new Laserbeam(laserAttr)
                 break;
         }
     }

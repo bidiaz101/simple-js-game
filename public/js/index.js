@@ -28,7 +28,7 @@ function gameLoop(){
 
 function setup(){
     player = new Player()
-    player.controls()
+    player.setupControls()
     animate(gameLoop)
 }
 
