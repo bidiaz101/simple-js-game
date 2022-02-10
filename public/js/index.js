@@ -14,6 +14,7 @@ function update(){
 function draw(){
     drawBackground()
     player.draw()
+    Laserbeam.all.forEach(laserbeam => laserbeam.draw())
 }
 
 function gameLoop(){

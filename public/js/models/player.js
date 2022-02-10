@@ -16,7 +16,7 @@ class Player {
         this.xSpeed = 0
         this.ySpeed = 0
 
-        this.addMovement = this.addMovement.bind(this)
+        this.playerAction = this.playerAction.bind(this)
         this.stopMovement = this.stopMovement.bind(this)
     }
 
@@ -25,14 +25,13 @@ class Player {
     }
 
     setupMovement(){
-        document.addEventListener('keydown', this.addMovement)
+        document.addEventListener('keydown', this.playerAction)
         document.addEventListener('keyup', this.stopMovement)
     }
 
-    addMovement(e){
+    playerAction(e){
         switch(e.code){
             case UP_KEY:
-                this.ySpeed = this.y > 0 ? -1 : 0;
                 if(this.y > 0){
                     this.ySpeed = -1
                 } else {
@@ -44,11 +43,11 @@ class Player {
                 this.xSpeed = 0
                 break;
             case DOWN_KEY:
-                if(this.y < (GAME_HEIGHT - 20)){
+                if(this.y < (GAME_HEIGHT - this.height)){
                     this.ySpeed = 1
                 } else {
                     this.ySpeed = 0
-                    this.y = GAME_HEIGHT - 20
+                    this.y = GAME_HEIGHT - this.height
                 }
                 this.resetDirections()
                 this.direction.down = true
@@ -66,15 +65,25 @@ class Player {
                 this.ySpeed = 0
                 break;
             case RIGHT_KEY:
-                if(this.x < (GAME_WIDTH - 20)){
+                if(this.x < (GAME_WIDTH - this.height)){
                     this.xSpeed = 1
                 } else {
                     this.xSpeed = 0
-                    this.x = GAME_WIDTH - 20
+                    this.x = GAME_WIDTH - this.height
                 }
                 this.resetDirections()
                 this.direction.right = true
                 this.ySpeed = 0
+                break;
+            case SPACE:
+                let laserAttr = {}
+                if(this.direction.up){
+                    laserAttr.height = 40
+                    laserAttr.width = 5
+                    laserAttr.y = this.y - laserAttr.height - 5
+                    laserAttr.x = this.x + 7
+                }
+                new Laserbeam(laserAttr)
                 break;
         }
     }

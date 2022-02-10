@@ -12,4 +12,6 @@ const DOWN_KEY = 'KeyS'
 const LEFT_KEY = 'KeyA'
 const RIGHT_KEY = 'KeyD'
 
+const SPACE = 'Space'
+
 let player
