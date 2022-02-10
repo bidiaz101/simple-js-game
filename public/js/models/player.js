@@ -78,10 +78,11 @@ class Player {
             case SPACE:
                 let laserAttr = {}
                 if(this.direction.up){
-                    laserAttr.height = 40
+                    laserAttr.height = 25
                     laserAttr.width = 5
                     laserAttr.y = this.y - laserAttr.height - 5
-                    laserAttr.x = this.x + 7
+                    laserAttr.x = this.x + 7.5
+                    laserAttr.direction = 'up'
                 }
                 new Laserbeam(laserAttr)
                 break;

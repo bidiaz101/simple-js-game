@@ -9,6 +9,7 @@ function drawBackground(){
 
 function update(){
     player.update()
+    Laserbeam.all.forEach(laserbeam => laserbeam.update())
 }
 
 function draw(){
