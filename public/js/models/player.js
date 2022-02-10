@@ -1,4 +1,6 @@
 class Player {
+    static all = []
+
     constructor(){
         this.x = (GAME_WIDTH / 2) - 10
         this.y = (GAME_HEIGHT / 2) - 10
@@ -20,13 +22,11 @@ class Player {
 
         this.playerAction = this.playerAction.bind(this)
         this.stopMovement = this.stopMovement.bind(this)
+
+        Player.all.push(this)
     }
 
-    setupControls(){
-        this.setupMovement()
-    }
-
-    setupMovement(){
+    addEventListeners(){
         document.addEventListener('keydown', this.playerAction)
         document.addEventListener('keyup', this.stopMovement)
     }

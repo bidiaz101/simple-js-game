@@ -8,13 +8,13 @@ function drawBackground(){
 }
 
 function update(){
-    player.update()
+    Player.all.forEach(player => player.update())
     Laserbeam.all.forEach(laserbeam => laserbeam.update())
 }
 
 function draw(){
     drawBackground()
-    player.draw()
+    Player.all.forEach(player => player.draw())
     Laserbeam.all.forEach(laserbeam => laserbeam.draw())
 }
 
@@ -28,7 +28,7 @@ function gameLoop(){
 
 function setup(){
     player = new Player()
-    player.setupControls()
+    player.addEventListeners()
     animate(gameLoop)
 }
 
