@@ -7,4 +7,9 @@ const animate = window.requestAnimationFrame // use for animating
 const GAME_HEIGHT = 600
 const GAME_WIDTH = 800
 
+const UP_KEY = 'KeyW'
+const DOWN_KEY = 'KeyS'
+const LEFT_KEY = 'KeyA'
+const RIGHT_KEY = 'KeyD'
+
 let player
