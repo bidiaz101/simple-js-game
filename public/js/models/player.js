@@ -107,6 +107,7 @@ class Player {
                         laserAttr.direction = 'right'
                     }
                     new Laserbeam(laserAttr)
+                    new Enemy()
                     setTimeout(() => this.canFire = true, 300)
                 }
                 break;

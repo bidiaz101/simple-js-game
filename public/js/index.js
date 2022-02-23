@@ -16,6 +16,7 @@ function draw(){
     drawBackground()
     Player.all.forEach(player => player.draw())
     Laserbeam.all.forEach(laserbeam => laserbeam.draw())
+    Enemy.all.forEach(enemy => enemy.draw())
 }
 
 function gameLoop(){
