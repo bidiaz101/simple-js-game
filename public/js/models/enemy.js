@@ -2,8 +2,8 @@ class Enemy {
     static all = []
 
     constructor(){
-        this.x = 0
-        this.y = 0
+        this.x = (Math.random() * GAME_WIDTH)
+        this.y = (Math.random() * GAME_HEIGHT)
         this.color = 'white'
         this.width = 20
         this.height = 20
